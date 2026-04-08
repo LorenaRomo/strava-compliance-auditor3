@@ -1,11 +1,11 @@
 import streamlit as st
 
-# 1. BASE DE DATOS BILINGÜE CON RECOMENDACIONES TÉCNICAS
+# 1. BASE DE DATOS BILINGÜE ACTUALIZADA
 audit_content = {
     "Español": {
         "title": "⚖️ Strava Compliance Auditor Pro 2026",
-        "tabs": ["📚 Marco Legal", "🔍 Auditoría de Cláusulas", "📱 Evaluación de Funcionalidades", "🚀 Recomendaciones Senior"],
-        "sidebar_info": "Auditora: Lorena (Nala)\n\nEspecialidad: LegalTech & Compliance",
+        "tabs": ["📚 Marco Legal", "🔍 Auditoría de Cláusulas", "📱 Evaluación de Funcionalidades", "🚀 Conclusiones"],
+        "sidebar_info": "Auditor: ROMO Sandra\n\nEspecialidad: LegalTech & Compliance",
         "risk_label": "Puntuación de Riesgo Numérica",
         "analysis_label": "👁️ Análisis Técnico-Jurídico Profundo",
         "remedy_label": "✅ Recomendación Técnica y Jurídica (RGPD)",
@@ -19,6 +19,15 @@ audit_content = {
             "Privacidad y Seguridad (Art. 25 y 32)": "Privacidad por defecto y medidas de seguridad (cifrado) según el riesgo.",
             "Derechos de los Usuarios (Art. 15, 17 y 20)": "Acceso, Supresión (Olvido) y Portabilidad en formato mecánico."
         },
+        "final_verdict": "Strava 2026 presenta un modelo basado en la expropiación de datos biométricos. Valor agregado: mitiga sanciones del 4% de la facturación global.",
+        "conclusions_list": [
+            "(Artículo 5) Principios fundamentales: La aplicación debe estructurar su funcionamiento en torno a la Minimización de datos (adecuados y limitados), Limitación de la finalidad (fines explícitos para rutas/ritmo cardíaco), Limitación del plazo de conservación y Licitud/Transparencia.",
+            "(Artículos 6 y 7) El consentimiento: El tratamiento depende del consentimiento para fines específicos. El responsable debe demostrar que el usuario consintió y permitir su retirada de forma tan fácil como se otorgó.",
+            "(Artículo 9) Categorías especiales: Al registrar salud o datos biométricos, entra en categorías prohibidas por defecto. Requiere consentimiento explícito para tratar estos datos sensibles.",
+            "(Artículos 12 y 13) Transparencia: Información concisa, transparente e inteligible sobre el responsable, fines, base jurídica, plazos y elaboración de perfiles.",
+            "(Artículos 25 y 32) Privacidad y Seguridad: Privacidad por defecto (solo datos necesarios accesibles) y seguridad adecuada al riesgo (seudonimización y cifrado).",
+            "(Artículos 15, 17 y 20) Derechos de los Usuarios: Garantía de Acceso (confirmación de tratamiento), Supresión o 'derecho al olvido' (eliminación de datos) y Portabilidad (formato estructurado y mecánico)."
+        ],
         "clauses_data": {
             "1. Estructura Contractual": {
                 "hallazgo": "Doble entidad contratante y arbitraje obligatorio fuera de UE.",
@@ -73,14 +82,23 @@ audit_content = {
     },
     "English": {
         "title": "⚖️ Strava Compliance Auditor Pro 2026",
-        "tabs": ["📚 Legal Framework", "🔍 Clause Audit", "📱 Feature Evaluation", "🚀 Senior Recommendations"],
-        "sidebar_info": "Auditor: Lorena (Nala)\n\nSpecialty: LegalTech & Compliance",
+        "tabs": ["📚 Legal Framework", "🔍 Clause Audit", "📱 Feature Evaluation", "🚀 Conclusions"],
+        "sidebar_info": "Auditor: ROMO Sandra\n\nSpecialty: LegalTech & Compliance",
         "risk_label": "Numerical Risk Score",
         "analysis_label": "👁️ In-depth Legal Analysis",
         "remedy_label": "✅ Technical and Legal Recommendation (GDPR)",
         "legal_header": "Regulatory Framework (GDPR)",
         "legal_main_warning": "**GDPR Art. 83.5:** Critical violations carry fines up to **20M EUR** or **4% turnover**.",
         "legal_sections": {"Principles (Art. 5)": "Focus on Minimization, Purpose, Storage and Transparency.", "Consent (Art. 6/7)": "Must be withdrawable.", "Special (Art. 9)": "Health data prohibited by default.", "Transparency": "Concise info.", "Privacy (Art. 25/32)": "Privacy by default.", "Rights": "Access, Erasure, Portability."},
+        "final_verdict": "Senior Conclusion: Strava 2026 presents a model based on the expropriation of biometric data. Added value: mitigates penalties of 4% of global turnover.",
+        "conclusions_list": [
+            "(Article 5) Fundamental Principles: Data Minimization (adequate and limited), Purpose Limitation (explicit purposes), Storage Limitation, and Lawfulness/Transparency.",
+            "(Articles 6 and 7) Consent: Processing depends on specific consent. The controller must demonstrate consent and allow withdrawal as easily as it was given.",
+            "(Article 9) Special Categories: Health/biometric data are prohibited by default and require explicit consent.",
+            "(Articles 12 and 13) Transparency: Concise, transparent, and intelligible information on controller, purposes, legal basis, and profiling.",
+            "(Articles 25 and 32) Privacy & Security: Privacy by default and security appropriate to the risk (pseudonymization and encryption).",
+            "(Articles 15, 17 and 20) User Rights: Guarantee of Access, Erasure ('Right to be forgotten'), and Portability in structured, machine-readable format."
+        ],
         "clauses_data": {
             "1. Contractual Structure": {
                 "hallazgo": "Dual entity (Ireland/USA). Mandatory arbitration.",
@@ -136,7 +154,7 @@ audit_content = {
 }
 
 # LÓGICA DE INTERFAZ
-st.set_page_config(page_title="Nala Compliance Pro", layout="wide")
+st.set_page_config(page_title="Romo Compliance Pro", layout="wide")
 idioma = st.sidebar.selectbox("🌐 Language / Idioma", ["Español", "English"])
 txt = audit_content[idioma]
 st.sidebar.markdown("---")
@@ -165,7 +183,6 @@ with tab2:
         st.warning(f"**Fundamento / Basis:** {datos['fundamento']}")
         with st.expander(txt["analysis_label"], expanded=True):
             st.write(datos['analisis'])
-        # NUEVA SECCIÓN DE RECOMENDACIÓN DINÁMICA
         st.success(f"**{txt['remedy_label']}:**\n\n{datos['recomendacion']}")
         st.subheader(txt["risk_label"])
         st.metric(label="Score", value=f"{datos['score']}%")
@@ -173,7 +190,6 @@ with tab2:
 
 with tab3:
     st.header("📱 Evaluación de Funcionalidades vs RGPD")
-    # (Textos OCR previos conservados)
     col1, col2, col3 = st.columns(3)
     with col1:
         st.markdown("### 🏥 Biometría (Art. 9)\n* **Esfuerzo Relativo:** Algoritmo predictivo.\n* **Análisis:** Consentimiento 'Explícito'.")
@@ -183,5 +199,9 @@ with tab3:
         st.markdown("### 🤖 IA Contextual (AI Act)\n* **Sugerencia de Rutas:** Entrenamiento.\n* **Análisis:** Riesgo reputacional.")
 
 with tab4:
-    st.header("🚀 Dictamen Final para Contratación")
-    st.success("Conclusión Senior: Strava 2026 presenta un modelo basado en la expropiación de datos biométricos. Valor agregado: mitiga sanciones del 4% del facturación global.")
+    st.header(f"🚀 {txt['tabs'][3]}")
+    st.success(txt["final_verdict"])
+    
+    st.markdown("---")
+    for concl in txt["conclusions_list"]:
+        st.markdown(f"* {concl}")
