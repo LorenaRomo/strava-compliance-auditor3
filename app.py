@@ -121,7 +121,7 @@ audit_content = {
                 "recomendacion": "Health data (Art. 9) processing is prohibited unless explicit consent. Art. 7(4) prevents conditional biometrics.",
                 "score": 92
             },
-            "4. IA & ML": {
+            "4. AI & ML": {
                 "hallazgo": "Model training with user data.",
                 "fundamento": "Art. 22 GDPR / AI Act.",
                 "analisis": "Requires independent consent that generic terms do not satisfy.",
@@ -153,26 +153,13 @@ audit_content = {
     }
 }
 
-# 2. LÓGICA DE INTERFAZ Y SEGURIDAD
+# LÓGICA DE INTERFAZ
 st.set_page_config(page_title="Romo Compliance Pro", layout="wide")
-
-# Bloque para ocultar menú de GitHub, cabecera y pie de página
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-# Configuración de Sidebar
 idioma = st.sidebar.selectbox("🌐 Language / Idioma", ["Español", "English"])
 txt = audit_content[idioma]
 st.sidebar.markdown("---")
 st.sidebar.info(txt["sidebar_info"])
 
-# Cuerpo de la aplicación
 st.title(txt["title"])
 tab1, tab2, tab3, tab4 = st.tabs(txt["tabs"])
 
